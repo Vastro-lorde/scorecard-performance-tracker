@@ -95,9 +95,9 @@ namespace scorecard_performance_tracker.Services
             };
         }
 
-        public async Task<Response<PaginationModel<IEnumerable<ScoreResponseDto>>>> GetScoresByNameAsync(int pageSize, int pageNumber, string DevName)
+        public async Task<Response<PaginationModel<IEnumerable<ScoreResponseDto>>>> GetScoresByNameAsync(int pageSize, int pageNumber, string UserId)
         {
-            var scores = await _scoreRepository.GetScoresByDevNameAsync(DevName);
+            var scores = await _scoreRepository.GetScoresByDevNameAsync(UserId);
             var response = _mapper.Map<IEnumerable<ScoreResponseDto>>(scores);
 
             if (scores != null)
@@ -122,7 +122,14 @@ namespace scorecard_performance_tracker.Services
 
         public async Task<Response<Score>> CreateScoreAsync(CreateScoreDto createScore)
         {
+            
+            double task = createScore.WeeklyTaskScore;
+            double agile = createScore.AgileScore;
+            double assessment = createScore.AssesmentScore;
+            double algorithm = createScore.AlgorithmScore;
+            double CumulativeScore = Math.Floor((task * 0.4) + (agile * 0.2) + (assessment * 0.2) + (algorithm * 0.2));
             Score score = _mapper.Map<Score>(createScore);
+            score.CumulativeScore = CumulativeScore;
             var result = await _scoreRepository.CreateScoreAsync(score);
             if (result)
             {
@@ -143,8 +150,17 @@ namespace scorecard_performance_tracker.Services
 
             if (score != null)
             {
+                double task = updateScore.WeeklyTaskScore;
+                double agile = updateScore.AgileScore;
+                double assessment = updateScore.AssesmentScore;
+                double algorithm = updateScore.AlgorithmScore;
+                double CumulativeScore = Math.Floor((task * 0.4) + (agile * 0.2) + (assessment * 0.2) + (algorithm * 0.2));
+
                 var updatedScore = _mapper.Map(updateScore,score);
+
+                updatedScore.CumulativeScore = CumulativeScore;
                 updatedScore.UpdatedOn = DateTime.Now;
+
                 var result = await _scoreRepository.UpdateScoreAsync(updatedScore);
 
                 if (result)

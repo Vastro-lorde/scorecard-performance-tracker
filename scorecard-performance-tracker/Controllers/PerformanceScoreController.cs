@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using scorecard_performance_tracker.DTOs;
 using scorecard_performance_tracker.Services;
 
 namespace scorecard_performance_tracker.Controllers
 {
+    [EnableCors]
     [Route("api/[controller]")]
     [ApiController]
     public class PerformanceScoreController : ControllerBase

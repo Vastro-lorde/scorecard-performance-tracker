@@ -9,14 +9,14 @@ namespace scorecard_performance_tracker.Models
     {
         [Required]
         [StringLength(250, MinimumLength = 3, ErrorMessage = DataAnnotationsHelper.CreatedByValidator)]
-        public string? DevName { get; set; }
+        public string? UserId { get; set; }
         [Required]
         public string? DevSquad { get; set; }
-        public short AgileScore { get; set; }
-        public short AlgorithmScore { get; set; }
-        public short AssesmentScore { get; set; }
-        public short WeeklyTaskScore { get; set; }
-        public short CumulativeScore { get; set; }
+        public double AgileScore { get; set; }
+        public double AlgorithmScore { get; set; }
+        public double AssesmentScore { get; set; }
+        public double WeeklyTaskScore { get; set; }
+        public double CumulativeScore { get; set; }
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [StringLength(250, MinimumLength = 3, ErrorMessage = DataAnnotationsHelper.CreatedByValidator)]

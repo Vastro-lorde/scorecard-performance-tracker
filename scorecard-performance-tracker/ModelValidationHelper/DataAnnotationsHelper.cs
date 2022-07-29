@@ -10,5 +10,6 @@
         public const string OverviewValidator = "Overview must be between 3 and 250 characters in length";
         public const string HashTagValidator = "HashTag must be between 3 and 50 characters in length";
         public const string DescriptionValidator = "Description must be between 3 and 250 characters in length";
+        public const string ScoreValidator = "The field {0} must be greater than {1} and less than 100.";
     }
 }

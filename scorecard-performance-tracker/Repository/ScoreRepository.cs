@@ -40,9 +40,9 @@ namespace scorecard_performance_tracker.Repository
             var scores = await _dbContext.Scores.ToListAsync();
             return scores = await _dbContext.Scores.ToListAsync();
         }
-        public async Task<ICollection<Score>> GetScoresByDevNameAsync(string DevName)
+        public async Task<ICollection<Score>> GetScoresByDevNameAsync(string UserId)
         {
-            var scores = await _dbContext.Scores.Where(x => x.DevName == DevName).ToListAsync();
+            var scores = await _dbContext.Scores.Where(x => x.UserId == UserId).ToListAsync();
             return scores;
         }
     }
