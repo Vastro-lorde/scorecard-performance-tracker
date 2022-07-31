@@ -23,6 +23,6 @@ namespace scorecard_performance_tracker.Models
         public string? CreatedBy { get; set; }
         [StringLength(250, MinimumLength = 3, ErrorMessage = DataAnnotationsHelper.UpdatedByValidator)]
         public string? UpdatedBy { get; set; }
-        public DateTime UpdatedOn { get; set; }
+        
     }
 }

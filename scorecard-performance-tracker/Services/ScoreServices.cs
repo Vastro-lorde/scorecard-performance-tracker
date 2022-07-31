@@ -95,9 +95,9 @@ namespace scorecard_performance_tracker.Services
             };
         }
 
-        public async Task<Response<PaginationModel<IEnumerable<ScoreResponseDto>>>> GetScoresByNameAsync(int pageSize, int pageNumber, string UserId)
+        public async Task<Response<PaginationModel<IEnumerable<ScoreResponseDto>>>> GetScoresByUserIdAsync(int pageSize, int pageNumber, string UserId)
         {
-            var scores = await _scoreRepository.GetScoresByDevNameAsync(UserId);
+            var scores = await _scoreRepository.GetScoresByUserIdAsync(UserId);
             var response = _mapper.Map<IEnumerable<ScoreResponseDto>>(scores);
 
             if (scores != null)

@@ -10,7 +10,7 @@ namespace scorecard_performance_tracker.Services
         Task<Response<Score>> DeleteScoreAsync(string ScoreId);
         Task<Response<PaginationModel<IEnumerable<ScoreResponseDto>>>> GetAllScoresAsync(int pageSize, int pageNumber);
         Task<Response<ScoreResponseDto>> GetScoreByIdAsync(string ScoreId);
-        Task<Response<PaginationModel<IEnumerable<ScoreResponseDto>>>> GetScoresByNameAsync(int pageSize, int pageNumber, string DevName);
+        Task<Response<PaginationModel<IEnumerable<ScoreResponseDto>>>> GetScoresByUserIdAsync(int pageSize, int pageNumber, string UserId);
         Task<Response<Score>> UpdateScoreDetails(string ScoreId, UpdateScoreDto updateScore);
     }
 }

@@ -11,5 +11,6 @@ namespace scorecard_performance_tracker.Models
         [Required]
         public string Id { get; set; }
         public DateTime CreationTime { get; set; }
+        public DateTime UpdatedOn { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace scorecard_performance_tracker.Repository
         Task<bool> DeleteScore(Score request);
         Task<List<Score>> GetAllScoresAsync();
         Task<Score> GetScoreByIdAsync(string id);
-        Task<ICollection<Score>> GetScoresByDevNameAsync(string DevName);
+        Task<ICollection<Score>> GetScoresByUserIdAsync(string UserId);
         Task<bool> UpdateScoreAsync(Score request);
     }
 }

@@ -52,12 +52,12 @@ namespace scorecard_performance_tracker.Controllers
         }
 
 
-        [HttpGet("GetAllPerformanceScoreByName")]
-        public async Task<IActionResult> GetAllPerformanceScoreByName(int pageSize, int pageNumber, string DevName)
+        [HttpGet("GetAllPerformanceScoreByUserId")]
+        public async Task<IActionResult> GetAllPerformanceScoreByUserId(int pageSize, int pageNumber, string UserId)
         {
             try
             {
-                return Ok(await _scoreServices.GetScoresByNameAsync(pageSize, pageNumber, DevName));
+                return Ok(await _scoreServices.GetScoresByUserIdAsync(pageSize, pageNumber, UserId));
             }
             catch (ArgumentException argex)
             {

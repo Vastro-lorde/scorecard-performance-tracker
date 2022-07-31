@@ -2,9 +2,9 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using scorecard_performance_tracker.Data;
 
 #nullable disable
@@ -12,62 +12,62 @@ using scorecard_performance_tracker.Data;
 namespace scorecard_performance_tracker.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220729100255_changedName2Id")]
-    partial class changedName2Id
+    [Migration("20220731191633_postges")]
+    partial class postges
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.7")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("scorecard_performance_tracker.Models.Score", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("text");
 
-                    b.Property<short>("AgileScore")
-                        .HasColumnType("smallint");
+                    b.Property<double>("AgileScore")
+                        .HasColumnType("double precision");
 
-                    b.Property<short>("AlgorithmScore")
-                        .HasColumnType("smallint");
+                    b.Property<double>("AlgorithmScore")
+                        .HasColumnType("double precision");
 
-                    b.Property<short>("AssesmentScore")
-                        .HasColumnType("smallint");
+                    b.Property<double>("AssesmentScore")
+                        .HasColumnType("double precision");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("character varying(250)");
 
                     b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
-                    b.Property<short>("CumulativeScore")
-                        .HasColumnType("smallint");
+                    b.Property<double>("CumulativeScore")
+                        .HasColumnType("double precision");
 
                     b.Property<string>("DevSquad")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("UpdatedBy")
                         .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("character varying(250)");
 
                     b.Property<DateTime>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("character varying(250)");
 
-                    b.Property<short>("WeeklyTaskScore")
-                        .HasColumnType("smallint");
+                    b.Property<double>("WeeklyTaskScore")
+                        .HasColumnType("double precision");
 
                     b.HasKey("Id");
 

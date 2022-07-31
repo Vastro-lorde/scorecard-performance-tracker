@@ -7,7 +7,7 @@ namespace scorecard_performance_tracker.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-
+            
         }
         public DbSet<Score> Scores { get; set; }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
@@ -20,7 +20,8 @@ namespace scorecard_performance_tracker.Data
                 {
                     case EntityState.Added:
                         ((BaseEntity)entry.Entity).Id = Guid.NewGuid().ToString();
-                        ((BaseEntity)entry.Entity).CreationTime = DateTime.Now;
+                        ((BaseEntity)entry.Entity).CreationTime = DateTime.Now.ToUniversalTime();
+                        ((BaseEntity)entry.Entity).UpdatedOn = DateTime.Now.ToUniversalTime();
                         break;
                 }
             }
