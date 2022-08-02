@@ -12,8 +12,8 @@ using scorecard_performance_tracker.Data;
 namespace scorecard_performance_tracker.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220731191633_postges")]
-    partial class postges
+    [Migration("20220802184745_pos")]
+    partial class pos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  scorecard-performance-tracker:
+    image: ${DOCKER_REGISTRY-}scorecardperformancetracker
+    build:
+      context: .
+      dockerfile: scorecard-performance-tracker/Dockerfile
+    ports:
+       - "5435:80"
+  postgresql_database:
+    image: postgres
+    environment:
+       - POSTGRES_USER=postgres
+       - POSTGRES_PASSWORD=12345
+       - POSTGRES_DB=ScoreDb
+    ports:
+       - "5431:5431"
+    restart: unless-stopped
+    volumes:
+       - database-data1:/var/lib/postgresql/data1/
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+        PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+        PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+       - "5250:80"
+    restart: always
+    volumes:
+       - pgadmin:/root/.pgadmin/
+
+volumes:
+  database-data1:
+  pgadmin:

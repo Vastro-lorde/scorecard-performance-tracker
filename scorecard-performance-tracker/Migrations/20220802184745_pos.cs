@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace scorecard_performance_tracker.Migrations
 {
-    public partial class postges : Migration
+    public partial class pos : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,8 +23,8 @@ namespace scorecard_performance_tracker.Migrations
                     CumulativeScore = table.Column<double>(type: "double precision", nullable: false),
                     CreatedBy = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: false),
                     UpdatedBy = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: true),
-                    UpdatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
